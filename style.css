@@ -58,14 +58,14 @@ header h1 {
   width: 400px;
  }
 
- #tarefaDigitada {
+ #botaoAdicionar {
   width: 60px;
   height: 40px;
   margin-left: 5px;
   cursor: pointer;
  }
 
- #tarefaDigitada:hover {
+ #botaoAdicionar:hover {
   background-color: rgb(110, 194, 110);
   color: white;
   transition-duration: 200ms;
