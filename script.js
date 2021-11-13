@@ -1,13 +1,4 @@
-let bancoDeTarefas = [
-  {
-    descricao: "Limpar a casa",
-    status: "checked"
-  },
-  {
-    descricao: "Dar banho no gato",
-    status: ""
-  }
-];
+let bancoDeTarefas = [];
 
 const criarTarefaHtml = (descricao, status, indice) => {
   const tarefa = document.createElement("li");
@@ -26,7 +17,9 @@ const criarTarefaHtml = (descricao, status, indice) => {
 const atualizarLista = () => {
   document.getElementById("listaTarefas").innerHTML = "";
 
-  bancoDeTarefas.forEach((item, indice) => criarTarefaHtml(item.descricao, item.status, indice))
+  bancoDeTarefas.forEach((item, indice) => criarTarefaHtml(item.descricao, item.status, indice));
+
+  localStorage.setItem("bancoDeTarefas", JSON.stringify(bancoDeTarefas));
 }
 
 const adicionarTarefa = () => {
@@ -57,12 +50,15 @@ const marcaCheckbox = (indice) => {
   atualizarLista();
 }
 
+const carregaListaTaferas = () => {
+  let bancoExistente = localStorage.getItem("bancoDeTarefas");
 
-atualizarLista();
-document.getElementById("botaoAdicionar").addEventListener("click", adicionarTarefa);
+  if (bancoExistente) {
+    bancoExistente = JSON.parse(bancoExistente);
+    bancoDeTarefas = bancoExistente;
+  }
 
+  atualizarLista();
+}
 
-
-
-
-
+carregaListaTaferas();
