@@ -77,6 +77,7 @@ header h1 {
  }
 
 /* --- Input (checkbox) e Button (excluir) --- */
+
 #listaTarefas li {
   font-size: 20px;
   background-color: #2c9eeb;
@@ -100,7 +101,6 @@ header h1 {
   text-decoration-color: #186aa0;
   text-decoration-thickness: 5px;
 }
-
 
 #listaTarefas label {
   color: white;
@@ -135,7 +135,6 @@ span.material-icons.lixeira {
   color: white;
  }
 
-
  footer {
   background-color: white;
   position: fixed;
@@ -143,7 +142,6 @@ span.material-icons.lixeira {
   width: 100%;
   text-align: center;
   padding: 10px;
-  
  }
 
  footer p {

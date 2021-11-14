@@ -1,5 +1,13 @@
 let bancoDeTarefas = [];
 
+const atualizarLista = () => {
+  document.getElementById("listaTarefas").innerHTML = "";
+
+  bancoDeTarefas.forEach((item, indice) => criarTarefaHtml(item.descricao, item.status, indice));
+
+  localStorage.setItem("bancoDeTarefas", JSON.stringify(bancoDeTarefas));
+}
+
 const criarTarefaHtml = (descricao, status, indice) => {
   const tarefa = document.createElement("li");
   tarefa.innerHTML = `
@@ -14,19 +22,11 @@ const criarTarefaHtml = (descricao, status, indice) => {
   document.getElementById("listaTarefas").appendChild(tarefa);
 }
 
-const atualizarLista = () => {
-  document.getElementById("listaTarefas").innerHTML = "";
-
-  bancoDeTarefas.forEach((item, indice) => criarTarefaHtml(item.descricao, item.status, indice));
-
-  localStorage.setItem("bancoDeTarefas", JSON.stringify(bancoDeTarefas));
-}
-
 const adicionarTarefa = () => {
   const inputAdicionar = document.querySelector('input[type="text"]');
 
   if (inputAdicionar.value === "") {
-    alert("Por favor: digite uma tarefa no campo abaixo!");
+    alert("Por favor, digite uma tarefa no campo abaixo!");
 
   } else {
     const novaTarefa = {
@@ -41,8 +41,12 @@ const adicionarTarefa = () => {
 }
 
 const removeItem = (indice) => {
-  bancoDeTarefas.splice(indice, 1);
-  atualizarLista();
+  const resposta = confirm("Deseja realmente excluir esta tarefa?");
+
+  if (resposta) {
+    bancoDeTarefas.splice(indice, 1);
+    atualizarLista();
+  }
 }
 
 const marcaCheckbox = (indice) => {
